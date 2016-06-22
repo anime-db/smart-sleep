@@ -1,0 +1,21 @@
+{
+    "name": "anime-db/smart-sleep",
+    "license": "MIT",
+    "type": "library",
+    "description": "Smart sleep",
+    "keywords": ["php", "sleep"],
+    "homepage": "http://github.com/anime-db/smart-sleep",
+    "autoload": {
+        "psr-4": {
+            "AnimeDb\\Bundle\\SmartSleep\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AnimeDb\\Bundle\\SmartSleep\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=5.4.0"
+    }
+}
