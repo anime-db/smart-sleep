@@ -7,7 +7,7 @@
  */
 namespace AnimeDb\SmartSleep\Rule;
 
-class OnceDay extends RuleBase
+class OnceDayRule extends RuleBase
 {
     /**
      * @var \DateTime
@@ -39,6 +39,7 @@ class OnceDay extends RuleBase
         $next_day = clone $this->time;
         $next_day->setTime(0, 0, 0)->modify('+1 day');
         $offset = $next_day->getTimestamp() - $this->time->getTimestamp(); // offset to next day
+
         return $offset + rand(0, 86400); // 86400 is a 1 day
     }
 }

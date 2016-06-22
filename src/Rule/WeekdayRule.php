@@ -7,7 +7,7 @@
  */
 namespace AnimeDb\SmartSleep\Rule;
 
-class Weekday extends RandMaxSecondsBase
+class WeekdayRule extends RandMaxSecondsRuleBase
 {
     /**
      * @param \DateTime $time

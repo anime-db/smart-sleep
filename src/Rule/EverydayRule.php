@@ -7,7 +7,7 @@
  */
 namespace AnimeDb\SmartSleep\Rule;
 
-class Holiday extends RandMaxSecondsBase
+class EverydayRule extends RandMaxSecondsRuleBase
 {
     /**
      * @param \DateTime $time
@@ -16,8 +16,6 @@ class Holiday extends RandMaxSecondsBase
      */
     public function isMatched(\DateTime $time)
     {
-        return $time->format('N') > 5 &&
-            $this->getStart() <= $time->format('G') &&
-            $this->getEnd() > $time->format('G');
+        return $this->getStart() <= $time->format('G') && $this->getEnd() > $time->format('G');
     }
 }
