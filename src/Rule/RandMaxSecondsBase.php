@@ -10,7 +10,7 @@ namespace AnimeDb\SmartSleep\Rule;
 abstract class RandMaxSecondsBase extends RuleBase
 {
     /**
-     * Default sleep at least seconds
+     * Default sleep at least seconds.
      *
      * @var int
      */
