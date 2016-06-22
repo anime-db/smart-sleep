@@ -1,12 +1,10 @@
 <?php
 /**
- * AnimeDb package
+ * AnimeDb package.
  *
- * @package   AnimeDb
  * @author    Peter Gribanov <info@peter-gribanov.ru>
  * @copyright Copyright (c) 2011, Peter Gribanov
  */
-
 namespace AnimeDb\SmartSleep\Rule;
 
 class OnceDay extends RuleBase
