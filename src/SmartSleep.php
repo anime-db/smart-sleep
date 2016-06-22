@@ -31,15 +31,15 @@ class SmartSleep
      */
     public function getSleepSeconds(\DateTime $now = null)
     {
-        $seconds = 0;
         $now = $now ?: new \DateTime();
+
         foreach ($this->schedule as $rule) {
             if ($rule->isMatched($now)) {
                 $seconds = $rule->getSeconds();
-                break;
+                return $seconds > 0 ? $seconds : 0;
             }
         }
 
-        return $seconds > 0 ? $seconds : 0;
+        return 0;
     }
 }
