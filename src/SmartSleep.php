@@ -14,7 +14,7 @@ class SmartSleep
     /**
      * @var RuleInterface[]
      */
-    protected $schedule = array();
+    protected $schedule = [];
 
     /**
      * @param RuleInterface[] $schedule
