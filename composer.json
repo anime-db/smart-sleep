@@ -7,12 +7,12 @@
     "homepage": "http://github.com/anime-db/smart-sleep",
     "autoload": {
         "psr-4": {
-            "AnimeDb\\Bundle\\SmartSleep\\": "src/"
+            "AnimeDb\\SmartSleep\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "AnimeDb\\Bundle\\SmartSleep\\Tests\\": "tests/"
+            "AnimeDb\\SmartSleep\\Tests\\": "tests/"
         }
     },
     "require": {
