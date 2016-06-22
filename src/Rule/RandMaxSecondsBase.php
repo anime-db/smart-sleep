@@ -14,7 +14,7 @@ abstract class RandMaxSecondsBase extends RuleBase
      *
      * @var int
      */
-    const DEFAULT_MIN_SLEEP_SECONDS = 20;
+    const DEFAULT_MIN_SLEEP_SECONDS = 10;
 
     /**
      * @var int
