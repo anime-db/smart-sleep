@@ -25,17 +25,13 @@ class SmartSleep
     }
 
     /**
-     * @param \DateTime|null $now
-     * @param Schedule|null $schedule
+     * @param \DateTime $now
      *
      * @return int
      */
-    public function getSleepSeconds(\DateTime $now = null, Schedule $schedule = null)
+    public function getSleepSeconds(\DateTime $now)
     {
-        $schedule = $schedule ?: $this->schedule;
-        $now = $now ?: new \DateTime();
-
-        $rule = $schedule->getMatchedRule($now);
+        $rule = $this->schedule->getMatchedRule($now);
         if ($rule instanceof RuleInterface) {
             $seconds = $rule->getSeconds();
 
