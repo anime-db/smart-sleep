@@ -63,10 +63,10 @@ class ScheduleBuilder
     public function buildSchedule(array $schedule)
     {
         $result = [];
-        foreach ($schedule as $rule) {
-            $rule = $this->buildRule($rule['rule'], $rule['start'], $rule['end'], $rule['seconds']);
+        foreach ($schedule as $options) {
+            $rule = $this->buildRule($options['rule'], $options['start'], $options['end'], $options['seconds']);
 
-            if ($rule) {
+            if ($rule instanceof RuleInterface) {
                 $result[] = $rule;
             }
         }
