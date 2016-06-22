@@ -12,16 +12,16 @@ use AnimeDb\SmartSleep\Rule\RuleInterface;
 class ScheduleBuilder
 {
     /**
-     * @var Chain
+     * @var RuleCollection
      */
-    protected $chain;
+    protected $collection;
 
     /**
-     * @param Chain $chain
+     * @param RuleCollection $collection
      */
-    public function __construct(Chain $chain)
+    public function __construct(RuleCollection $collection)
     {
-        $this->chain = $chain;
+        $this->collection = $collection;
     }
 
     /**
@@ -34,16 +34,16 @@ class ScheduleBuilder
      */
     public function buildRule($name, $start, $end, $seconds)
     {
-        if (!$this->chain->hasRule($name)) {
+        if (!$this->collection->has($name)) {
             return null;
         }
 
         return $this
-            ->chain
-            ->getRule($name)
+            ->collection
+            ->get($name)
             ->setEnd($end)
-            ->setSeconds($seconds)
-            ->setStart($start);
+            ->setStart($start)
+            ->setSeconds($seconds);
     }
 
     /**

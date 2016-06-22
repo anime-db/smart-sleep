@@ -9,7 +9,7 @@ namespace AnimeDb\SmartSleep;
 
 use AnimeDb\SmartSleep\Rule\RuleInterface;
 
-class Chain
+class RuleCollection
 {
     /**
      * @var RuleInterface[]
@@ -17,10 +17,10 @@ class Chain
     protected $rules = [];
 
     /**
-     * @param RuleInterface $rule
      * @param string $name
+     * @param RuleInterface $rule
      */
-    public function addRule(RuleInterface $rule, $name)
+    public function set($name, RuleInterface $rule)
     {
         $this->rules[$name] = $rule;
     }
@@ -30,7 +30,7 @@ class Chain
      *
      * @return RuleInterface|null
      */
-    public function getRule($name)
+    public function get($name)
     {
         return isset($this->rules[$name]) ? clone $this->rules[$name] : null;
     }
@@ -40,7 +40,7 @@ class Chain
      *
      * @return bool
      */
-    public function hasRule($name)
+    public function has($name)
     {
         return isset($this->rules[$name]);
     }
