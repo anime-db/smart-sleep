@@ -19,10 +19,14 @@ class RuleCollection
     /**
      * @param string $name
      * @param RuleInterface $rule
+     *
+     * @return RuleCollection
      */
     public function set($name, RuleInterface $rule)
     {
-        $this->rules[$name] = $rule;
+        $this->rules[$name] = clone $rule;
+
+        return $this;
     }
 
     /**
