@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 2011, Peter Gribanov
  */
 
-namespace AnimeDb\SmartSleep\Tests;
+namespace AnimeDb\SmartSleep\Tests\Unit;
 
 use AnimeDb\SmartSleep\Rule\RuleInterface;
 
