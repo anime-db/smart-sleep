@@ -11,3 +11,5 @@
 
 # smart-sleep
 SmartSleep util
+
+See [functional tests](https://github.com/anime-db/smart-sleep/tree/master/tests/functional) for more details.
