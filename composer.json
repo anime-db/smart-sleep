@@ -13,7 +13,8 @@
     "autoload-dev": {
         "psr-4": {
             "AnimeDb\\SmartSleep\\Tests\\": "tests/"
-        }
+        },
+        "files": [ "tests/functions.php" ]
     },
     "require": {
         "php": ">=5.4.0"
