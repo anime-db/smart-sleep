@@ -7,22 +7,22 @@
  */
 namespace AnimeDb\SmartSleep\Tests\Unit\Rule;
 
-use AnimeDb\SmartSleep\Rule\OnceDayRule;
+use AnimeDb\SmartSleep\Rule\OnceWeekRule;
 
-class OnceDayRuleTest extends TestCase
+class OnceWeekRuleTest extends TestCase
 {
     /**
-     * @var OnceDayRule
+     * @var OnceWeekRule
      */
     protected $rule;
 
     protected function setUp()
     {
-        $this->rule = new OnceDayRule();
+        $this->rule = new OnceWeekRule();
     }
 
     /**
-     * @return OnceDayRule
+     * @return OnceWeekRule
      */
     protected function getRule()
     {
@@ -49,27 +49,26 @@ class OnceDayRuleTest extends TestCase
 
     public function testGetSecondsFromConstruct()
     {
-        $offset = strtotime('+1 day 00:00:00') - time();
+        $offset = strtotime('+1 week 00:00:00') - time();
 
         $seconds = $this->rule->getSeconds();
 
         // -1 seconds because is long wait execute test
         $this->assertTrue($seconds >= -1);
-        $this->assertTrue($seconds < $offset + 86400);
+        $this->assertTrue($seconds < $offset + 604800);
     }
 
     public function testGetSecondsFromMatched()
     {
         $time = new \DateTime('23-06-2016 13:42:15');
-
         $offset_time = clone $time;
-        $offset_time->modify('+1 day 00:00:00');
+        $offset_time->modify('+1 week 00:00:00');
         $offset = $offset_time->getTimestamp() - $time->getTimestamp();
 
         $this->rule->isMatched($time);
 
         $seconds = $this->rule->getSeconds();
         $this->assertTrue($seconds >= 0);
-        $this->assertTrue($seconds < $offset + 86400);
+        $this->assertTrue($seconds < $offset + 604800);
     }
 }
