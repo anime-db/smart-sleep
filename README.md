@@ -9,7 +9,16 @@
 [![Dependency Status](https://www.versioneye.com/user/projects/576a99d6fdabcd0046ae922e/badge.svg?style=flat)](https://www.versioneye.com/user/projects/576a99d6fdabcd0046ae922e)
 [![License](https://poser.pugx.org/anime-db/smart-sleep/license.png)](https://packagist.org/packages/anime-db/smart-sleep)
 
-# smart-sleep
-SmartSleep util
+# SmartSleep util
+
+## Installation
+
+Pretty simple with [Composer](http://packagist.org), run:
+
+```sh
+composer require anime-db/smart-sleep
+```
+
+## How-to
 
 See [functional tests](https://github.com/anime-db/smart-sleep/tree/master/tests/functional) for more details.
