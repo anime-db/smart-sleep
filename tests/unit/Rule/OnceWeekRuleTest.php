@@ -61,8 +61,7 @@ class OnceWeekRuleTest extends TestCase
     public function testGetSecondsFromMatched()
     {
         $time = new \DateTime('23-06-2016 13:42:15');
-        $offset_time = clone $time;
-        $offset_time->modify('+1 week 00:00:00');
+        $offset_time = new \DateTime('30-06-2016 00:00:00');
         $offset = $offset_time->getTimestamp() - $time->getTimestamp();
 
         $this->rule->isMatched($time);

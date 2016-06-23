@@ -62,8 +62,7 @@ class OnceDayRuleTest extends TestCase
     {
         $time = new \DateTime('23-06-2016 13:42:15');
 
-        $offset_time = clone $time;
-        $offset_time->modify('+1 day 00:00:00');
+        $offset_time = new \DateTime('24-06-2016 00:00:00');
         $offset = $offset_time->getTimestamp() - $time->getTimestamp();
 
         $this->rule->isMatched($time);
