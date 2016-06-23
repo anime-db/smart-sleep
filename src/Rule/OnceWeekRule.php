@@ -37,7 +37,7 @@ class OnceWeekRule extends RuleBase
     public function getSeconds()
     {
         $offset_time = clone $this->time;
-        $offset_time->setTime(0, 0, 0)->modify('+1 week');
+        $offset_time->modify('+1 week 00:00:00');
         $offset = $offset_time->getTimestamp() - $this->time->getTimestamp(); // offset to next week
 
         return $offset + rand(0, 604800); // 604800 is a 1 week

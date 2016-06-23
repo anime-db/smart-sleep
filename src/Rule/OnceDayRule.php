@@ -37,7 +37,7 @@ class OnceDayRule extends RuleBase
     public function getSeconds()
     {
         $offset_time = clone $this->time;
-        $offset_time->setTime(0, 0, 0)->modify('+1 day');
+        $offset_time->modify('+1 day 00:00:00');
         $offset = $offset_time->getTimestamp() - $this->time->getTimestamp(); // offset to next day
 
         return $offset + rand(0, 86400); // 86400 is a 1 day
