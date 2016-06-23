@@ -5,7 +5,6 @@
  * @author    Peter Gribanov <info@peter-gribanov.ru>
  * @copyright Copyright (c) 2011, 'Peter Gribanov
  */
-
 use AnimeDb\SmartSleep\Rule\HolidayRule;
 use AnimeDb\SmartSleep\Rule\WeekdayRule;
 use AnimeDb\SmartSleep\RuleCollection;

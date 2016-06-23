@@ -5,7 +5,6 @@
  * @author    Peter Gribanov <info@peter-gribanov.ru>
  * @copyright Copyright (c) 2011, Peter Gribanov
  */
-
 namespace AnimeDb\SmartSleep\Tests\Unit\Rule;
 
 use AnimeDb\SmartSleep\Rule\WeekdayRule;

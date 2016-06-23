@@ -5,7 +5,6 @@
  * @author    Peter Gribanov <info@peter-gribanov.ru>
  * @copyright Copyright (c) 2011, Peter Gribanov
  */
-
 use AnimeDb\SmartSleep\Rule\EverydayRule;
 use AnimeDb\SmartSleep\SmartSleep;
 use AnimeDb\SmartSleep\Schedule;

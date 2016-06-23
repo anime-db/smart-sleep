@@ -91,7 +91,7 @@ class ScheduleTest extends \PHPUnit_Framework_TestCase
         $time = new \DateTime();
         $match_rule = null;
 
-        for ($i = 1; $i <= $count_rules; $i++) {
+        for ($i = 1; $i <= $count_rules; ++$i) {
             /* @var $rule \PHPUnit_Framework_MockObject_MockObject|RuleInterface */
             $rule = $this->getMock('AnimeDb\SmartSleep\Rule\RuleInterface');
             if ($match_rule_number && $i > $match_rule_number) {

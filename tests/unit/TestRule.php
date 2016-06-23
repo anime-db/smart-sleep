@@ -5,13 +5,12 @@
  * @author    Peter Gribanov <info@peter-gribanov.ru>
  * @copyright Copyright (c) 2011, Peter Gribanov
  */
-
 namespace AnimeDb\SmartSleep\Tests\Unit;
 
 use AnimeDb\SmartSleep\Rule\RuleInterface;
 
 /**
- * Rule only for tests
+ * Rule only for tests.
  */
 class TestRule implements RuleInterface
 {

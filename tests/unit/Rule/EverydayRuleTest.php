@@ -39,7 +39,7 @@ class EverydayRuleTest extends RandMaxSecondsTestCase
      *
      * @return EverydayRule
      */
-    function getRuleForMinSleepSeconds($min_sleep_seconds)
+    public function getRuleForMinSleepSeconds($min_sleep_seconds)
     {
         if (!$this->rule_limited) {
             $this->rule_limited = new EverydayRule($min_sleep_seconds);
