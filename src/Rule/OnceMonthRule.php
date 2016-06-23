@@ -36,16 +36,18 @@ class OnceMonthRule extends RuleBase
      */
     public function getSeconds()
     {
+        // interval duration [next month, next month +1)
         $offset_time = clone $this->time;
-        $offset_time->modify('+1 month');
+        $offset_time->modify('+1 month 00:00:00')->modify('first day of this month');
 
         $limit_time = clone $this->time;
-        $limit_time->modify('+2 month');
+        $limit_time->modify('+2 month 00:00:00')->modify('first day of this month');
+        $limit = $limit_time->getTimestamp() - $offset_time->getTimestamp();
 
-        // limit to later month
-        $limit = $limit_time->setTime(0, 0, 0)->getTimestamp() - $offset_time->getTimestamp();
         // offset to next month
-        $offset = $offset_time->setTime(0, 0, 0)->getTimestamp() - $this->time->getTimestamp();
+        $offset_time = clone $this->time;
+        $offset_time->modify('+1 month 00:00:00');
+        $offset = $offset_time->getTimestamp() - $this->time->getTimestamp();
 
         return $offset + rand(0, $limit);
     }
