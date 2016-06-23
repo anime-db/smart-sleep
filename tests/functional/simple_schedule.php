@@ -11,7 +11,7 @@ use AnimeDb\SmartSleep\Schedule;
 
 require __DIR__.'/../bootstrap.php';
 
-echo 'Simple schedule functional test.'.PHP_EOL;
+echo 'Functional test: Simple schedule.'.PHP_EOL;
 
 $smart = new SmartSleep(new Schedule([
     (new EverydayRule())->setStart(0)->setEnd(3)->setSeconds(260), // [00:00, 03:00)

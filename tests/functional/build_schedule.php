@@ -13,7 +13,7 @@ use AnimeDb\SmartSleep\SmartSleep;
 
 require __DIR__.'/../bootstrap.php';
 
-echo 'Build schedule functional test.'.PHP_EOL;
+echo 'Functional test: Build schedule.'.PHP_EOL;
 
 $schedule = [
     ['rule' => 'weekday', 'start' => 0, 'end' => 2, 'seconds' => 600],
