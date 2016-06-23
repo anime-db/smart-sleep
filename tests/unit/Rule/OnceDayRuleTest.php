@@ -49,26 +49,26 @@ class OnceDayRuleTest extends TestCase
 
     public function testGetSecondsFromConstruct()
     {
-        $offset = strtotime('+1 day 00:00:00') - time();
+        $offset = strtotime('+2 day 00:00:00') - time();
 
         $seconds = $this->rule->getSeconds();
 
         // -1 seconds because is long wait execute test
         $this->assertTrue($seconds >= -1);
-        $this->assertTrue($seconds < $offset + 86400);
+        $this->assertTrue($seconds < $offset);
     }
 
     public function testGetSecondsFromMatched()
     {
         $time = new \DateTime('23-06-2016 13:42:15');
 
-        $offset_time = new \DateTime('24-06-2016 00:00:00');
+        $offset_time = new \DateTime('25-06-2016 00:00:00');
         $offset = $offset_time->getTimestamp() - $time->getTimestamp();
 
         $this->rule->isMatched($time);
 
         $seconds = $this->rule->getSeconds();
         $this->assertTrue($seconds >= 0);
-        $this->assertTrue($seconds < $offset + 86400);
+        $this->assertTrue($seconds < $offset);
     }
 }
