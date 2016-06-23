@@ -51,7 +51,7 @@ class ScheduleBuilder
      *
      * <code>
      * [
-     *   {rule: <rule_name>, start: <start_hour>, start: <end_hour>, seconds: <sleep_seconds>},
+     *   {rule: <rule_name>, start: <start_hour>, end: <end_hour>, seconds: <sleep_seconds>},
      *   ...
      * ]
      * </code>
