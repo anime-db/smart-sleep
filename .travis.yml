@@ -15,7 +15,7 @@ install:
 
 script:
     - phpunit --verbose --coverage-clover=coverage.clover
-    - find tests/functional -type f | xargs php
+    - for file in tests/functional/*; do php -f $file; done
 
 after_script:
     - wget https://scrutinizer-ci.com/ocular.phar
