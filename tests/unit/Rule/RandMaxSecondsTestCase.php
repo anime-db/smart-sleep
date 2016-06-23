@@ -19,7 +19,7 @@ abstract class RandMaxSecondsTestCase extends TestCase
      *
      * @return RuleInterface
      */
-    abstract function getRuleForMinSleepSeconds($min_sleep_seconds);
+    abstract protected function getRuleForMinSleepSeconds($min_sleep_seconds);
 
     /**
      * @return array

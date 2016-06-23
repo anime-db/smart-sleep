@@ -14,7 +14,7 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
     /**
      * @return RuleInterface
      */
-    abstract function getRule();
+    abstract protected function getRule();
 
     /**
      * @return array

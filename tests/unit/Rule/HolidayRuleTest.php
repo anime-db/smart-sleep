@@ -30,7 +30,7 @@ class HolidayRuleTest extends RandMaxSecondsTestCase
     /**
      * @return HolidayRule
      */
-    function getRule()
+    protected function getRule()
     {
         return $this->rule;
     }
@@ -40,7 +40,7 @@ class HolidayRuleTest extends RandMaxSecondsTestCase
      *
      * @return HolidayRule
      */
-    function getRuleForMinSleepSeconds($min_sleep_seconds)
+    protected function getRuleForMinSleepSeconds($min_sleep_seconds)
     {
         if (!$this->rule_limited) {
             $this->rule_limited = new HolidayRule($min_sleep_seconds);

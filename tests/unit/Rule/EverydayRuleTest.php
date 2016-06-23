@@ -29,7 +29,7 @@ class EverydayRuleTest extends RandMaxSecondsTestCase
     /**
      * @return EverydayRule
      */
-    function getRule()
+    protected function getRule()
     {
         return $this->rule;
     }

@@ -30,7 +30,7 @@ class WeekdayRuleTest extends RandMaxSecondsTestCase
     /**
      * @return WeekdayRule
      */
-    function getRule()
+    protected function getRule()
     {
         return $this->rule;
     }
@@ -40,7 +40,7 @@ class WeekdayRuleTest extends RandMaxSecondsTestCase
      *
      * @return WeekdayRule
      */
-    function getRuleForMinSleepSeconds($min_sleep_seconds)
+    protected function getRuleForMinSleepSeconds($min_sleep_seconds)
     {
         if (!$this->rule_limited) {
             $this->rule_limited = new WeekdayRule($min_sleep_seconds);
