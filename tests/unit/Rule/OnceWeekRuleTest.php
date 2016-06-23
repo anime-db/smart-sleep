@@ -49,25 +49,25 @@ class OnceWeekRuleTest extends TestCase
 
     public function testGetSecondsFromConstruct()
     {
-        $offset = strtotime('+2 week 00:00:00') - time();
+        $limit = strtotime('+2 week 00:00:00') - time();
 
         $seconds = $this->rule->getSeconds();
 
         // -1 seconds because is long wait execute test
         $this->assertTrue($seconds >= -1);
-        $this->assertTrue($seconds < $offset);
+        $this->assertTrue($seconds < $limit);
     }
 
     public function testGetSecondsFromMatched()
     {
         $time = new \DateTime('23-06-2016 13:42:15');
-        $offset_time = new \DateTime('07-07-2016 00:00:00');
-        $offset = $offset_time->getTimestamp() - $time->getTimestamp();
+        $limit_time = new \DateTime('07-07-2016 00:00:00');
+        $limit = $limit_time->getTimestamp() - $time->getTimestamp();
 
         $this->rule->isMatched($time);
 
         $seconds = $this->rule->getSeconds();
         $this->assertTrue($seconds >= 0);
-        $this->assertTrue($seconds < $offset);
+        $this->assertTrue($seconds < $limit);
     }
 }
