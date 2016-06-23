@@ -12,7 +12,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "AnimeDb\\SmartSleep\\Tests\\Unit": "tests/unit"
+            "AnimeDb\\SmartSleep\\Tests\\Unit\\": "tests/unit"
         },
         "files": [ "tests/functions.php" ]
     },
