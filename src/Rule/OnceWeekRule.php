@@ -7,7 +7,7 @@
  */
 namespace AnimeDb\SmartSleep\Rule;
 
-class OnceDayRule extends RuleBase
+class OnceWeekRule extends RuleBase
 {
     /**
      * @var \DateTime
@@ -37,9 +37,9 @@ class OnceDayRule extends RuleBase
     public function getSeconds()
     {
         $next_day = clone $this->time;
-        $next_day->setTime(0, 0, 0)->modify('+1 day');
-        $offset = $next_day->getTimestamp() - $this->time->getTimestamp(); // offset to next day
+        $next_day->setTime(0, 0, 0)->modify('+7 day');
+        $offset = $next_day->getTimestamp() - $this->time->getTimestamp(); // offset to next week
 
-        return $offset + rand(0, 86400); // 86400 is a 1 day
+        return $offset + rand(0, 604800); // 604800 is a 1 week
     }
 }
