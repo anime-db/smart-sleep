@@ -14,6 +14,8 @@ use AnimeDb\SmartSleep\SmartSleep;
 
 require __DIR__.'/../bootstrap.php';
 
+echo 'Build schedule functional test.'.PHP_EOL;
+
 $schedule = [
     ['rule' => 'weekday', 'start' => 0, 'end' => 2, 'seconds' => 600],
     ['rule' => 'weekday', 'start' => 1, 'end' => 7, 'seconds' => 800],
@@ -38,5 +40,4 @@ $smart = new SmartSleep($builder->buildSchedule($schedule));
 
 $seconds = $smart->getSleepSeconds(new \DateTime());
 
-echo sprintf('sleep %s s.'.PHP_EOL, $seconds);
-sleep($seconds);
+echo sprintf('Sleep %s s.'.PHP_EOL, $seconds);
