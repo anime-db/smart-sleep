@@ -1,5 +1,7 @@
 language: php
 
+sudo: false
+
 php:
     - 5.4
     - 5.5
@@ -9,14 +11,18 @@ php:
 notifications:
     email: dev@anime-db.org
 
-install:
+before_install:
     - composer self-update
-    - composer install --prefer-source --dev --no-interaction
+    - 'if [[ -n "$GH_TOKEN" ]]; then composer config github-oauth.github.com ${GH_TOKEN}; fi;'
+    - mkdir build
+
+install:
+    - composer install --prefer-dist --no-interaction --no-progress
 
 script:
-    - phpunit --verbose --coverage-clover=coverage.clover
+    - vendor/bin/phpunit
     - for file in tests/functional/*; do php -f $file; done
 
 after_script:
-    - wget https://scrutinizer-ci.com/ocular.phar
-    - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+    - vendor/bin/ocular code-coverage:upload --format=php-clover build/coverage-clover.xml
+    - vendor/bin/coveralls -v -c .coveralls.yml
