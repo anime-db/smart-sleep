@@ -12,9 +12,9 @@ notifications:
     email: dev@anime-db.org
 
 before_install:
-  - composer self-update
-  - 'if [[ -n "$GH_TOKEN" ]]; then composer config github-oauth.github.com ${GH_TOKEN}; fi;'
-  - mkdir build
+    - composer self-update
+    - 'if [[ -n "$GH_TOKEN" ]]; then composer config github-oauth.github.com ${GH_TOKEN}; fi;'
+    - mkdir build
 
 install:
     - composer install --prefer-dist --no-interaction --no-progress
