@@ -14,13 +14,14 @@ notifications:
 before_install:
   - composer self-update
   - 'if [[ -n "$GH_TOKEN" ]]; then composer config github-oauth.github.com ${GH_TOKEN}; fi;'
+  - mkdir build
 
 install:
     - composer install --prefer-dist --no-interaction --no-progress
 
 script:
-    - vendor/bin/phpunit --verbose --coverage-clover=coverage.clover
+    - vendor/bin/phpunit
     - for file in tests/functional/*; do php -f $file; done
 
 after_script:
-    - vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover
+    - vendor/bin/ocular code-coverage:upload --format=php-clover build/coverage-clover.xml
