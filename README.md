@@ -22,3 +22,7 @@ composer require anime-db/smart-sleep
 ## How-to
 
 See [functional tests](https://github.com/anime-db/smart-sleep/tree/master/tests/functional) for more details.
+
+## License
+
+This bundle is under the [MIT license](http://opensource.org/licenses/MIT). See the complete license in the file: LICENSE
