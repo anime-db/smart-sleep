@@ -7,9 +7,11 @@
 [![StyleCI](https://styleci.io/repos/61719557/shield?branch=master)](https://styleci.io/repos/61719557)
 [![License](https://img.shields.io/packagist/l/anime-db/smart-sleep.svg?maxAge=3600)](https://github.com/anime-db/smart-sleep)
 
-# SmartSleep util
+SmartSleep
+==========
 
-## Installation
+Installation
+------------
 
 Pretty simple with [Composer](http://packagist.org), run:
 
@@ -17,7 +19,8 @@ Pretty simple with [Composer](http://packagist.org), run:
 composer require anime-db/smart-sleep
 ```
 
-## How-to
+How-to
+------
 
 First build schedule
 
@@ -50,6 +53,61 @@ $seconds = $smart->sleepForSeconds(new \DateTime());
 sleep($seconds);
 ```
 
-## License
+Rules
+-----
+
+### EverydayRule
+
+The rule corresponds to any day in the specified time interval.
+
+```php
+$rule = new EverydayRule($start_hour, $end_hour, $max_sleep_seconds)
+```
+
+### HolidayRule
+
+The rule corresponds to the holiday at the specified time interval.
+
+```php
+$rule = new HolidayRule($start_hour, $end_hour, $max_sleep_seconds)
+```
+
+### WeekdayRule
+
+The rule corresponds to the weekday at the specified time interval.
+
+```php
+$rule = new WeekdayRule($start_hour, $end_hour, $max_sleep_seconds)
+```
+
+### OnceDayRule
+
+The rule always corresponds to the specified time.
+Returns the seconds in the next day.
+
+```php
+$rule = new OnceDayRule()
+```
+
+### OnceWeekRule
+
+The rule always corresponds to the specified time.
+Returns the seconds in the next week.
+
+```php
+$rule = new OnceWeekRule()
+```
+
+### OnceMonthRule
+
+The rule always corresponds to the specified time.
+Returns the seconds in the next month.
+
+```php
+$rule = new OnceMonthRule()
+```
+
+License
+-------
 
 This bundle is under the [MIT license](http://opensource.org/licenses/MIT). See the complete license in the file: LICENSE
