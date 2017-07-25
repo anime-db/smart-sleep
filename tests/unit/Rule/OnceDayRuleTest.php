@@ -22,7 +22,7 @@ class OnceDayRuleTest extends \PHPUnit_Framework_TestCase
         $this->rule = new OnceDayRule();
     }
 
-    public function testGetSecondsFromConstruct()
+    public function testSecondsFromConstruct()
     {
         $limit = strtotime('+2 day 00:00:00') - time();
 
@@ -33,7 +33,7 @@ class OnceDayRuleTest extends \PHPUnit_Framework_TestCase
         $this->assertLessThan($limit, $seconds);
     }
 
-    public function testGetSecondsFromMatched()
+    public function testSecondsFromMatched()
     {
         $time = new \DateTime('23-06-2016 13:42:15');
 
