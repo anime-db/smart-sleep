@@ -8,12 +8,12 @@
 
 namespace AnimeDb\SmartSleep\Rule;
 
-class OnceWeekRule extends RuleBase
+class OnceWeekRule implements Rule
 {
     /**
      * @var \DateTime
      */
-    protected $time;
+    private $time;
 
     public function __construct()
     {
@@ -35,10 +35,10 @@ class OnceWeekRule extends RuleBase
     /**
      * @return int
      */
-    public function getSeconds()
+    public function seconds()
     {
         $offset_time = clone $this->time;
-        $offset_time->modify('+1 week 00:00:00');
+        $offset_time->modify('+1 week')->setTime(0, 0, 0);
         $offset = $offset_time->getTimestamp() - $this->time->getTimestamp(); // offset to next week
 
         return $offset + rand(0, 604800); // 604800 is a 1 week

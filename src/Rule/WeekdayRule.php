@@ -8,8 +8,23 @@
 
 namespace AnimeDb\SmartSleep\Rule;
 
-class WeekdayRule extends RandMaxSecondsRuleBase
+class WeekdayRule implements HourIntervalRule
 {
+    use HourlyIntervalRuleTrait;
+    use RandSecondsRuleTrait;
+
+    /**
+     * @param int $start
+     * @param int $end
+     * @param int $seconds
+     */
+    public function __construct($start, $end, $seconds)
+    {
+        $this->setStart($start);
+        $this->setEnd($end);
+        $this->setSeconds($seconds);
+    }
+
     /**
      * @param \DateTime $time
      *
@@ -17,8 +32,10 @@ class WeekdayRule extends RandMaxSecondsRuleBase
      */
     public function isMatched(\DateTime $time)
     {
-        return $time->format('N') <= 5 &&
-            $this->getStart() <= $time->format('G') &&
-            $this->getEnd() > $time->format('G');
+        return
+            $time->format('N') <= 5 &&
+            $this->start() <= $time->format('G') &&
+            $this->end() > $time->format('G')
+        ;
     }
 }

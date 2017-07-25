@@ -8,18 +8,25 @@
 
 namespace AnimeDb\SmartSleep\Rule;
 
-class EverydayRule implements HourIntervalRule
+class SpecificDayRule implements HourIntervalRule
 {
     use HourlyIntervalRuleTrait;
     use RandSecondsRuleTrait;
 
     /**
+     * @var \DateTime
+     */
+    private $day;
+
+    /**
+     * @param \DateTime $day
      * @param int $start
      * @param int $end
      * @param int $seconds
      */
-    public function __construct($start, $end, $seconds)
+    public function __construct(\DateTime $day, $start, $end, $seconds)
     {
+        $this->day = clone $day;
         $this->setStart($start);
         $this->setEnd($end);
         $this->setSeconds($seconds);
@@ -32,6 +39,10 @@ class EverydayRule implements HourIntervalRule
      */
     public function isMatched(\DateTime $time)
     {
-        return $this->start() <= $time->format('G') && $this->end() > $time->format('G');
+        return
+            $this->day->format('Ymd') == $time->format('Ymd') &&
+            $this->start() <= $time->format('G') &&
+            $this->end() > $time->format('G')
+        ;
     }
 }

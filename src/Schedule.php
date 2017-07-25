@@ -8,17 +8,17 @@
 
 namespace AnimeDb\SmartSleep;
 
-use AnimeDb\SmartSleep\Rule\RuleInterface;
+use AnimeDb\SmartSleep\Rule\Rule;
 
 class Schedule implements \IteratorAggregate, \Countable
 {
     /**
-     * @var RuleInterface[]
+     * @var Rule[]
      */
-    protected $rules = [];
+    private $rules = [];
 
     /**
-     * @param RuleInterface[] $rules
+     * @param Rule[] $rules
      */
     public function __construct(array $rules = [])
     {
@@ -28,15 +28,11 @@ class Schedule implements \IteratorAggregate, \Countable
     }
 
     /**
-     * @param RuleInterface $rule
-     *
-     * @return true
+     * @param Rule $rule
      */
-    public function add(RuleInterface $rule)
+    public function add(Rule $rule)
     {
         $this->rules[] = $rule;
-
-        return true;
     }
 
     /**
@@ -56,7 +52,7 @@ class Schedule implements \IteratorAggregate, \Countable
     }
 
     /**
-     * @return RuleInterface[]
+     * @return Rule[]
      */
     public function toArray()
     {
@@ -74,9 +70,9 @@ class Schedule implements \IteratorAggregate, \Countable
     /**
      * @param \DateTime $time
      *
-     * @return RuleInterface|null
+     * @return Rule|null
      */
-    public function getMatchedRule(\DateTime $time)
+    public function matchedRule(\DateTime $time)
     {
         foreach ($this->rules as $rule) {
             if ($rule->isMatched($time)) {

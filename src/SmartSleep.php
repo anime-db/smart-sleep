@@ -8,14 +8,14 @@
 
 namespace AnimeDb\SmartSleep;
 
-use AnimeDb\SmartSleep\Rule\RuleInterface;
+use AnimeDb\SmartSleep\Rule\Rule;
 
 class SmartSleep
 {
     /**
      * @var Schedule
      */
-    protected $schedule = [];
+    private $schedule = [];
 
     /**
      * @param Schedule $schedule
@@ -30,11 +30,11 @@ class SmartSleep
      *
      * @return int
      */
-    public function getSleepSeconds(\DateTime $now)
+    public function sleepForSeconds(\DateTime $now)
     {
-        $rule = $this->schedule->getMatchedRule($now);
-        if ($rule instanceof RuleInterface) {
-            $seconds = $rule->getSeconds();
+        $rule = $this->schedule->matchedRule($now);
+        if ($rule instanceof Rule) {
+            $seconds = $rule->seconds();
 
             return $seconds > 0 ? $seconds : 0;
         }

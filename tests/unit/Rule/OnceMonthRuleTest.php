@@ -10,58 +10,32 @@ namespace AnimeDb\SmartSleep\Tests\Unit\Rule;
 
 use AnimeDb\SmartSleep\Rule\OnceMonthRule;
 
-class OnceMonthRuleTest extends TestCase
+class OnceMonthRuleTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var OnceMonthRule
      */
-    protected $rule;
+    private $rule;
 
     protected function setUp()
     {
         $this->rule = new OnceMonthRule();
     }
 
-    /**
-     * @return OnceMonthRule
-     */
-    protected function getRule()
-    {
-        return $this->rule;
-    }
-
-    /**
-     * @return array
-     */
-    public function getGettersAndSetters()
-    {
-        return [
-            ['getStart', 'setStart', -1],
-            ['getEnd', 'setEnd', -1],
-            // not check get/set seconds
-        ];
-    }
-
-    public function testSetSeconds()
-    {
-        // setted seconds not used
-        $this->assertEquals($this->rule, $this->rule->setSeconds(123));
-    }
-
-    public function testGetSecondsFromConstruct()
+    public function testSecondsFromConstruct()
     {
         $limit_time = new \DateTime('+2 month 00:00:00');
         $limit_time->modify('first day of this month');
         $limit = $limit_time->getTimestamp() - time();
 
-        $seconds = $this->rule->getSeconds();
+        $seconds = $this->rule->seconds();
 
         // -1 seconds because is long wait execute test
-        $this->assertTrue($seconds >= -1);
-        $this->assertTrue($seconds < $limit);
+        $this->assertGreaterThanOrEqual(-1, $seconds);
+        $this->assertLessThan($limit, $seconds);
     }
 
-    public function testGetSecondsFromMatched()
+    public function testSecondsFromMatched()
     {
         $time = new \DateTime('23-06-2016 13:42:15');
         $limit_time = new \DateTime('01-08-2016 13:42:15');
@@ -69,12 +43,12 @@ class OnceMonthRuleTest extends TestCase
 
         $this->rule->isMatched($time);
 
-        $seconds = $this->rule->getSeconds();
-        $this->assertTrue($seconds >= 0);
-        $this->assertTrue($seconds < $limit);
+        $seconds = $this->rule->seconds();
+        $this->assertGreaterThanOrEqual(0, $seconds);
+        $this->assertLessThan($limit, $seconds);
     }
 
-    public function testGetSecondsFromMatchedForFebruary()
+    public function testSecondsFromMatchedForFebruary()
     {
         $time = new \DateTime('31-01-2016 13:42:15');
         $limit_time = new \DateTime('01-03-2016 13:42:15');
@@ -82,8 +56,8 @@ class OnceMonthRuleTest extends TestCase
 
         $this->rule->isMatched($time);
 
-        $seconds = $this->rule->getSeconds();
-        $this->assertTrue($seconds >= 0);
-        $this->assertTrue($seconds < $limit);
+        $seconds = $this->rule->seconds();
+        $this->assertGreaterThanOrEqual(0, $seconds);
+        $this->assertLessThan($limit, $seconds);
     }
 }

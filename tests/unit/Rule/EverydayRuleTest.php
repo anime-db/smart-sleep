@@ -10,56 +10,19 @@ namespace AnimeDb\SmartSleep\Tests\Unit\Rule;
 
 use AnimeDb\SmartSleep\Rule\EverydayRule;
 
-class EverydayRuleTest extends RandMaxSecondsTestCase
+class EverydayRuleTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @var EverydayRule
-     */
-    protected $rule;
-
-    /**
-     * @var EverydayRule
-     */
-    protected $rule_limited;
-
-    protected function setUp()
-    {
-        $this->rule = new EverydayRule();
-    }
-
-    /**
-     * @return EverydayRule
-     */
-    protected function getRule()
-    {
-        return $this->rule;
-    }
-
-    /**
-     * @param int $min_sleep_seconds
-     *
-     * @return EverydayRule
-     */
-    public function getRuleForMinSleepSeconds($min_sleep_seconds)
-    {
-        if (!$this->rule_limited) {
-            $this->rule_limited = new EverydayRule($min_sleep_seconds);
-        }
-
-        return $this->rule_limited;
-    }
-
     /**
      * @return array
      */
     public function getMatches()
     {
         return [
-            [new \DateTime('2:59'), 3, 5, false],
-            [new \DateTime('3:00'), 3, 5, true],
-            [new \DateTime('4:00'), 3, 5, true],
-            [new \DateTime('4:59'), 3, 5, true],
-            [new \DateTime('5:00'), 3, 5, false],
+            [new \DateTime('2:59'), 3, 5, 10, false],
+            [new \DateTime('3:00'), 3, 5, 50, true],
+            [new \DateTime('4:00'), 3, 5, 100, true],
+            [new \DateTime('4:59'), 3, 5, 200, true],
+            [new \DateTime('5:00'), 3, 5, 550, false],
         ];
     }
 
@@ -69,18 +32,22 @@ class EverydayRuleTest extends RandMaxSecondsTestCase
      * @param \DateTime $time
      * @param int $start
      * @param int $end
+     * @param int $seconds
      * @param bool $match
      */
-    public function testIsMatched(\DateTime $time, $start, $end, $match)
+    public function testIsMatched(\DateTime $time, $start, $end, $seconds, $match)
     {
-        $this->rule
-            ->setStart($start)
-            ->setEnd($end);
+        $rule = new EverydayRule($start, $end, $seconds);
+
+        $this->assertEquals($start, $rule->start());
+        $this->assertEquals($end, $rule->end());
+        $this->assertGreaterThanOrEqual(0, $seconds);
+        $this->assertLessThanOrEqual($seconds, $rule->seconds());
 
         if ($match) {
-            $this->assertTrue($this->rule->isMatched($time));
+            $this->assertTrue($rule->isMatched($time));
         } else {
-            $this->assertFalse($this->rule->isMatched($time));
+            $this->assertFalse($rule->isMatched($time));
         }
     }
 }
