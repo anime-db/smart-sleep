@@ -113,6 +113,6 @@ class ScheduleTest extends \PHPUnit_Framework_TestCase
             $this->schedule->add($rule);
         }
 
-        $this->assertEquals($match_rule, $this->schedule->getMatchedRule($time));
+        $this->assertEquals($match_rule, $this->schedule->matchedRule($time));
     }
 }

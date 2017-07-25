@@ -32,7 +32,7 @@ class SmartSleep
      */
     public function sleepForSeconds(\DateTime $now)
     {
-        $rule = $this->schedule->getMatchedRule($now);
+        $rule = $this->schedule->matchedRule($now);
         if ($rule instanceof Rule) {
             $seconds = $rule->seconds();
 

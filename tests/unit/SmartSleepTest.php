@@ -47,7 +47,7 @@ class SmartSleepTest extends \PHPUnit_Framework_TestCase
     {
         $this->schedule
             ->expects($this->once())
-            ->method('getMatchedRule')
+            ->method('matchedRule')
             ->with($this->time)
             ->will($this->returnValue(null))
         ;
@@ -59,7 +59,7 @@ class SmartSleepTest extends \PHPUnit_Framework_TestCase
     {
         $this->schedule
             ->expects($this->once())
-            ->method('getMatchedRule')
+            ->method('matchedRule')
             ->with($this->time)
             ->will($this->returnValue($this->rule))
         ;
@@ -77,7 +77,7 @@ class SmartSleepTest extends \PHPUnit_Framework_TestCase
     {
         $this->schedule
             ->expects($this->once())
-            ->method('getMatchedRule')
+            ->method('matchedRule')
             ->with($this->time)
             ->will($this->returnValue($this->rule))
         ;

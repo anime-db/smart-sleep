@@ -29,14 +29,10 @@ class Schedule implements \IteratorAggregate, \Countable
 
     /**
      * @param Rule $rule
-     *
-     * @return true
      */
     public function add(Rule $rule)
     {
         $this->rules[] = $rule;
-
-        return true;
     }
 
     /**
@@ -76,7 +72,7 @@ class Schedule implements \IteratorAggregate, \Countable
      *
      * @return Rule|null
      */
-    public function getMatchedRule(\DateTime $time)
+    public function matchedRule(\DateTime $time)
     {
         foreach ($this->rules as $rule) {
             if ($rule->isMatched($time)) {
