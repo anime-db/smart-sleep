@@ -33,8 +33,8 @@ abstract class RandMaxSecondsRuleBase extends RuleBase
     /**
      * @return int
      */
-    public function getSeconds()
+    public function seconds()
     {
-        return rand($this->min_sleep_seconds, parent::getSeconds());
+        return rand($this->min_sleep_seconds, parent::seconds());
     }
 }

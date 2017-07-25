@@ -62,7 +62,7 @@ abstract class RandMaxSecondsTestCase extends TestCase
         $max = $min + 1;
 
         $this->assertEquals($rule, $rule->setSeconds($max));
-        $seconds = $rule->getSeconds();
+        $seconds = $rule->seconds();
         $this->assertTrue($seconds == $min || $seconds == $max);
     }
 }

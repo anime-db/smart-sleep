@@ -52,7 +52,7 @@ class OnceDayRuleTest extends TestCase
     {
         $limit = strtotime('+2 day 00:00:00') - time();
 
-        $seconds = $this->rule->getSeconds();
+        $seconds = $this->rule->seconds();
 
         // -1 seconds because is long wait execute test
         $this->assertTrue($seconds >= -1);
@@ -68,7 +68,7 @@ class OnceDayRuleTest extends TestCase
 
         $this->rule->isMatched($time);
 
-        $seconds = $this->rule->getSeconds();
+        $seconds = $this->rule->seconds();
         $this->assertTrue($seconds >= 0);
         $this->assertTrue($seconds < $limit);
     }

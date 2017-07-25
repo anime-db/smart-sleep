@@ -13,7 +13,7 @@ interface Rule
     /**
      * @return int
      */
-    public function getStart();
+    public function start();
 
     /**
      * @param int $start
@@ -25,7 +25,7 @@ interface Rule
     /**
      * @return int
      */
-    public function getEnd();
+    public function end();
 
     /**
      * @param int $end
@@ -37,7 +37,7 @@ interface Rule
     /**
      * @return int
      */
-    public function getSeconds();
+    public function seconds();
 
     /**
      * @param int $seconds

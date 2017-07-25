@@ -34,7 +34,7 @@ class SmartSleep
     {
         $rule = $this->schedule->getMatchedRule($now);
         if ($rule instanceof Rule) {
-            $seconds = $rule->getSeconds();
+            $seconds = $rule->seconds();
 
             return $seconds > 0 ? $seconds : 0;
         }

@@ -54,7 +54,7 @@ class OnceMonthRuleTest extends TestCase
         $limit_time->modify('first day of this month');
         $limit = $limit_time->getTimestamp() - time();
 
-        $seconds = $this->rule->getSeconds();
+        $seconds = $this->rule->seconds();
 
         // -1 seconds because is long wait execute test
         $this->assertTrue($seconds >= -1);
@@ -69,7 +69,7 @@ class OnceMonthRuleTest extends TestCase
 
         $this->rule->isMatched($time);
 
-        $seconds = $this->rule->getSeconds();
+        $seconds = $this->rule->seconds();
         $this->assertTrue($seconds >= 0);
         $this->assertTrue($seconds < $limit);
     }
@@ -82,7 +82,7 @@ class OnceMonthRuleTest extends TestCase
 
         $this->rule->isMatched($time);
 
-        $seconds = $this->rule->getSeconds();
+        $seconds = $this->rule->seconds();
         $this->assertTrue($seconds >= 0);
         $this->assertTrue($seconds < $limit);
     }

@@ -35,7 +35,7 @@ class OnceMonthRule extends RuleBase
     /**
      * @return int
      */
-    public function getSeconds()
+    public function seconds()
     {
         // interval duration [next month, next month +1)
         $offset_time = clone $this->time;

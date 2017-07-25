@@ -35,7 +35,7 @@ class OnceDayRule extends RuleBase
     /**
      * @return int
      */
-    public function getSeconds()
+    public function seconds()
     {
         $offset_time = clone $this->time;
         $offset_time->modify('+1 day 00:00:00');

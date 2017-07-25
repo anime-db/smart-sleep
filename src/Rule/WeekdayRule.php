@@ -18,7 +18,7 @@ class WeekdayRule extends RandMaxSecondsRuleBase
     public function isMatched(\DateTime $time)
     {
         return $time->format('N') <= 5 &&
-            $this->getStart() <= $time->format('G') &&
-            $this->getEnd() > $time->format('G');
+            $this->start() <= $time->format('G') &&
+            $this->end() > $time->format('G');
     }
 }

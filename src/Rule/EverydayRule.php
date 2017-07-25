@@ -17,6 +17,6 @@ class EverydayRule extends RandMaxSecondsRuleBase
      */
     public function isMatched(\DateTime $time)
     {
-        return $this->getStart() <= $time->format('G') && $this->getEnd() > $time->format('G');
+        return $this->start() <= $time->format('G') && $this->end() > $time->format('G');
     }
 }

@@ -33,7 +33,7 @@ class TestRule implements Rule
     /**
      * @return int
      */
-    public function getStart()
+    public function start()
     {
         return $this->start;
     }
@@ -53,7 +53,7 @@ class TestRule implements Rule
     /**
      * @return int
      */
-    public function getEnd()
+    public function end()
     {
         return $this->end;
     }
@@ -73,7 +73,7 @@ class TestRule implements Rule
     /**
      * @return int
      */
-    public function getSeconds()
+    public function seconds()
     {
         return $this->seconds;
     }
