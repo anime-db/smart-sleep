@@ -25,8 +25,8 @@ class ScheduleTest extends \PHPUnit_Framework_TestCase
 
     public function testInstanceOf()
     {
-        $this->assertInstanceOf('IteratorAggregate', $this->schedule);
-        $this->assertInstanceOf('Countable', $this->schedule);
+        $this->assertInstanceOf(\IteratorAggregate::class, $this->schedule);
+        $this->assertInstanceOf(\Countable::class, $this->schedule);
     }
 
     public function testConstruct()

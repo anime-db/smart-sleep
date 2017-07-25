@@ -56,6 +56,15 @@ sleep($seconds);
 Rules
 -----
 
+### SpecificDayRule
+
+The rule corresponds to specific day in the specified time interval.
+Can be used for public holidays.
+
+```php
+$rule = new SpecificDayRule(new \DateTime('2017-01-01'), $start_hour, $end_hour, $max_sleep_seconds)
+```
+
 ### EverydayRule
 
 The rule corresponds to any day in the specified time interval.
