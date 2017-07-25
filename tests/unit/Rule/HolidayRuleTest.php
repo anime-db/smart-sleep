@@ -10,45 +10,8 @@ namespace AnimeDb\SmartSleep\Tests\Unit\Rule;
 
 use AnimeDb\SmartSleep\Rule\HolidayRule;
 
-class HolidayRuleTest extends RandMaxSecondsTestCase
+class HolidayRuleTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @var HolidayRule
-     */
-    protected $rule;
-
-    /**
-     * @var HolidayRule
-     */
-    protected $rule_limited;
-
-    protected function setUp()
-    {
-        $this->rule = new HolidayRule();
-    }
-
-    /**
-     * @return HolidayRule
-     */
-    protected function getRule()
-    {
-        return $this->rule;
-    }
-
-    /**
-     * @param int $min_sleep_seconds
-     *
-     * @return HolidayRule
-     */
-    protected function getRuleForMinSleepSeconds($min_sleep_seconds)
-    {
-        if (!$this->rule_limited) {
-            $this->rule_limited = new HolidayRule($min_sleep_seconds);
-        }
-
-        return $this->rule_limited;
-    }
-
     /**
      * @return array
      */
@@ -56,18 +19,18 @@ class HolidayRuleTest extends RandMaxSecondsTestCase
     {
         return [
             // test by day time
-            [new \DateTime('25-06-2016 2:59'), 3, 5, false],
-            [new \DateTime('25-06-2016 3:00'), 3, 5, true],
-            [new \DateTime('25-06-2016 4:00'), 3, 5, true],
-            [new \DateTime('25-06-2016 4:59'), 3, 5, true],
-            [new \DateTime('25-06-2016 5:00'), 3, 5, false],
+            [new \DateTime('25-06-2016 2:59'), 3, 5, 10, false],
+            [new \DateTime('25-06-2016 3:00'), 3, 5, 20, true],
+            [new \DateTime('25-06-2016 4:00'), 3, 5, 50, true],
+            [new \DateTime('25-06-2016 4:59'), 3, 5, 100, true],
+            [new \DateTime('25-06-2016 5:00'), 3, 5, 150, false],
             // tests by week day
-            [new \DateTime('20-06-2016 4:00'), 3, 5, false],
-            [new \DateTime('21-06-2016 4:00'), 3, 5, false],
-            [new \DateTime('22-06-2016 4:00'), 3, 5, false],
-            [new \DateTime('24-06-2016 4:00'), 3, 5, false],
-            [new \DateTime('25-06-2016 4:00'), 3, 5, true],
-            [new \DateTime('26-06-2016 4:00'), 3, 5, true],
+            [new \DateTime('20-06-2016 4:00'), 3, 5, 300, false],
+            [new \DateTime('21-06-2016 4:00'), 3, 5, 550, false],
+            [new \DateTime('22-06-2016 4:00'), 3, 5, 0, false],
+            [new \DateTime('24-06-2016 4:00'), 3, 5, 333, false],
+            [new \DateTime('25-06-2016 4:00'), 3, 5, 123, true],
+            [new \DateTime('26-06-2016 4:00'), 3, 5, 999, true],
         ];
     }
 
@@ -77,18 +40,21 @@ class HolidayRuleTest extends RandMaxSecondsTestCase
      * @param \DateTime $time
      * @param int $start
      * @param int $end
+     * @param int $seconds
      * @param bool $match
      */
-    public function testIsMatched(\DateTime $time, $start, $end, $match)
+    public function testIsMatched(\DateTime $time, $start, $end, $seconds, $match)
     {
-        $this->rule
-            ->setStart($start)
-            ->setEnd($end);
+        $rule = new HolidayRule($start, $end, $seconds);
+
+        $this->assertEquals($start, $rule->start());
+        $this->assertEquals($end, $rule->end());
+        $this->assertTrue($rule->seconds() <= $seconds);
 
         if ($match) {
-            $this->assertTrue($this->rule->isMatched($time));
+            $this->assertTrue($rule->isMatched($time));
         } else {
-            $this->assertFalse($this->rule->isMatched($time));
+            $this->assertFalse($rule->isMatched($time));
         }
     }
 }

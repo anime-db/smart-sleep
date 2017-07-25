@@ -8,12 +8,12 @@
 
 namespace AnimeDb\SmartSleep\Rule;
 
-class OnceWeekRule extends RuleBase
+class OnceWeekRule implements Rule
 {
     /**
      * @var \DateTime
      */
-    protected $time;
+    private $time;
 
     public function __construct()
     {

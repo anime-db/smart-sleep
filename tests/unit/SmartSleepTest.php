@@ -17,28 +17,28 @@ class SmartSleepTest extends \PHPUnit_Framework_TestCase
     /**
      * @var \PHPUnit_Framework_MockObject_MockObject|Schedule
      */
-    protected $schedule;
+    private $schedule;
 
     /**
      * @var \PHPUnit_Framework_MockObject_MockObject|Rule
      */
-    protected $rule;
+    private $rule;
 
     /**
      * @var SmartSleep
      */
-    protected $smart_sleep;
+    private $smart_sleep;
 
     /**
      * @var \DateTime
      */
-    protected $time;
+    private $time;
 
     protected function setUp()
     {
         $this->time = new \DateTime();
-        $this->rule = $this->getMock('AnimeDb\SmartSleep\Rule\RuleInterface');
-        $this->schedule = $this->getMock('AnimeDb\SmartSleep\Schedule');
+        $this->rule = $this->getMock(Rule::class);
+        $this->schedule = $this->getMock(Schedule::class);
 
         $this->smart_sleep = new SmartSleep($this->schedule);
     }
@@ -49,7 +49,8 @@ class SmartSleepTest extends \PHPUnit_Framework_TestCase
             ->expects($this->once())
             ->method('getMatchedRule')
             ->with($this->time)
-            ->will($this->returnValue(null));
+            ->will($this->returnValue(null))
+        ;
 
         $this->assertEquals(0, $this->smart_sleep->sleepForSeconds($this->time));
     }
@@ -60,12 +61,14 @@ class SmartSleepTest extends \PHPUnit_Framework_TestCase
             ->expects($this->once())
             ->method('getMatchedRule')
             ->with($this->time)
-            ->will($this->returnValue($this->rule));
+            ->will($this->returnValue($this->rule))
+        ;
 
         $this->rule
             ->expects($this->once())
-            ->method('getSeconds')
-            ->will($this->returnValue(-1));
+            ->method('seconds')
+            ->will($this->returnValue(-1))
+        ;
 
         $this->assertEquals(0, $this->smart_sleep->sleepForSeconds($this->time));
     }
@@ -76,12 +79,14 @@ class SmartSleepTest extends \PHPUnit_Framework_TestCase
             ->expects($this->once())
             ->method('getMatchedRule')
             ->with($this->time)
-            ->will($this->returnValue($this->rule));
+            ->will($this->returnValue($this->rule))
+        ;
 
         $this->rule
             ->expects($this->once())
-            ->method('getSeconds')
-            ->will($this->returnValue(10));
+            ->method('seconds')
+            ->will($this->returnValue(10))
+        ;
 
         $this->assertEquals(10, $this->smart_sleep->sleepForSeconds($this->time));
     }

@@ -8,13 +8,15 @@
 
 namespace AnimeDb\SmartSleep\Rule;
 
-abstract class RandMaxSecondsRuleBase extends RuleBase
+interface HourIntervalRule extends Rule
 {
     /**
      * @return int
      */
-    public function seconds()
-    {
-        return rand(0, parent::seconds());
-    }
+    public function start();
+
+    /**
+     * @return int
+     */
+    public function end();
 }

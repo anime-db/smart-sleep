@@ -16,7 +16,7 @@ class ScheduleTest extends \PHPUnit_Framework_TestCase
     /**
      * @var Schedule
      */
-    protected $schedule;
+    private $schedule;
 
     protected function setUp()
     {
@@ -33,9 +33,9 @@ class ScheduleTest extends \PHPUnit_Framework_TestCase
     {
         /* @var $rules \PHPUnit_Framework_MockObject_MockObject[]|Rule[] */
         $rules = [
-            $this->getMock('AnimeDb\SmartSleep\Rule\RuleInterface'),
-            $this->getMock('AnimeDb\SmartSleep\Rule\RuleInterface'),
-            $this->getMock('AnimeDb\SmartSleep\Rule\RuleInterface'),
+            $this->getMock(Rule::class),
+            $this->getMock(Rule::class),
+            $this->getMock(Rule::class),
         ];
 
         $schedule = new Schedule($rules);
@@ -53,7 +53,7 @@ class ScheduleTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($this->schedule->isEmpty());
 
         /* @var $rule1 \PHPUnit_Framework_MockObject_MockObject|Rule */
-        $rule1 = $this->getMock('AnimeDb\SmartSleep\Rule\RuleInterface');
+        $rule1 = $this->getMock(Rule::class);
         $this->schedule->add($rule1);
 
         $this->assertEquals([$rule1], $this->schedule->toArray());
@@ -61,7 +61,7 @@ class ScheduleTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->schedule->isEmpty());
 
         /* @var $rule2 \PHPUnit_Framework_MockObject_MockObject|Rule */
-        $rule2 = $this->getMock('AnimeDb\SmartSleep\Rule\RuleInterface');
+        $rule2 = $this->getMock(Rule::class);
         $this->schedule->add($rule2);
 
         $this->assertEquals([$rule1, $rule2], $this->schedule->toArray());
@@ -94,7 +94,7 @@ class ScheduleTest extends \PHPUnit_Framework_TestCase
 
         for ($i = 1; $i <= $count_rules; ++$i) {
             /* @var $rule \PHPUnit_Framework_MockObject_MockObject|Rule */
-            $rule = $this->getMock('AnimeDb\SmartSleep\Rule\RuleInterface');
+            $rule = $this->getMock(Rule::class);
             if ($match_rule_number && $i > $match_rule_number) {
                 $rule
                     ->expects($this->never())

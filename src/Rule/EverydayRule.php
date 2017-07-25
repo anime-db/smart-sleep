@@ -8,8 +8,23 @@
 
 namespace AnimeDb\SmartSleep\Rule;
 
-class EverydayRule extends RandMaxSecondsRuleBase
+class EverydayRule implements HourIntervalRule
 {
+    use HourIntervalRuleTrait;
+    use RandMaxSecondsRuleTrait;
+
+    /**
+     * @param int $start
+     * @param int $end
+     * @param int $seconds
+     */
+    public function __construct($start, $end, $seconds)
+    {
+        $this->setStart($start);
+        $this->setEnd($end);
+        $this->setSeconds($seconds);
+    }
+
     /**
      * @param \DateTime $time
      *

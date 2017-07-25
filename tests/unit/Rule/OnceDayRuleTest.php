@@ -10,42 +10,16 @@ namespace AnimeDb\SmartSleep\Tests\Unit\Rule;
 
 use AnimeDb\SmartSleep\Rule\OnceDayRule;
 
-class OnceDayRuleTest extends TestCase
+class OnceDayRuleTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var OnceDayRule
      */
-    protected $rule;
+    private $rule;
 
     protected function setUp()
     {
         $this->rule = new OnceDayRule();
-    }
-
-    /**
-     * @return OnceDayRule
-     */
-    protected function getRule()
-    {
-        return $this->rule;
-    }
-
-    /**
-     * @return array
-     */
-    public function getGettersAndSetters()
-    {
-        return [
-            ['getStart', 'setStart', -1],
-            ['getEnd', 'setEnd', -1],
-            // not check get/set seconds
-        ];
-    }
-
-    public function testSetSeconds()
-    {
-        // setted seconds not used
-        $this->assertEquals($this->rule, $this->rule->setSeconds(123));
     }
 
     public function testGetSecondsFromConstruct()
