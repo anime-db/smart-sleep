@@ -10,7 +10,7 @@ namespace AnimeDb\SmartSleep\Rule;
 
 class WeekdayRule implements HourIntervalRule
 {
-    use HourIntervalRuleTrait;
+    use HourlyIntervalRuleTrait;
     use RandSecondsRuleTrait;
 
     /**

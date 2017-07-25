@@ -8,7 +8,7 @@
 
 namespace AnimeDb\SmartSleep\Rule;
 
-trait HourIntervalRuleTrait
+trait HourlyIntervalRuleTrait
 {
     /**
      * @var int
