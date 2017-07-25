@@ -11,7 +11,7 @@ namespace AnimeDb\SmartSleep\Rule;
 class HolidayRule implements HourIntervalRule
 {
     use HourIntervalRuleTrait;
-    use RandMaxSecondsRuleTrait;
+    use RandSecondsRuleTrait;
 
     /**
      * @param int $start

@@ -8,7 +8,7 @@
 
 namespace AnimeDb\SmartSleep\Rule;
 
-trait RandMaxSecondsRuleTrait
+trait RandSecondsRuleTrait
 {
     /**
      * @var int
