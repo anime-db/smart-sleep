@@ -19,7 +19,7 @@ install:
     - composer install --prefer-dist --no-interaction --no-progress
 
 script:
-    - vendor/bin/phpunit
+    - vendor/bin/phpunit --coverage-clover build/coverage-clover.xml
     - for file in tests/functional/*; do php -f $file; done
 
 after_script:
