@@ -15,7 +15,7 @@ class RuleCollection
     /**
      * @var Rule[]
      */
-    protected $rules = [];
+    private $rules = [];
 
     /**
      * @param string $name

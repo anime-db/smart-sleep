@@ -37,6 +37,6 @@ $builder = new ScheduleBuilder($collection);
 
 $smart = new SmartSleep($builder->buildSchedule($schedule));
 
-$seconds = $smart->getSleepSeconds(new \DateTime());
+$seconds = $smart->sleepForSeconds(new \DateTime());
 
 echo sprintf('Sleep %s s.'.PHP_EOL, $seconds);

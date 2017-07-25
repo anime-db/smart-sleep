@@ -15,7 +15,7 @@ class Schedule implements \IteratorAggregate, \Countable
     /**
      * @var Rule[]
      */
-    protected $rules = [];
+    private $rules = [];
 
     /**
      * @param Rule[] $rules

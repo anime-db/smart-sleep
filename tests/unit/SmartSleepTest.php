@@ -51,7 +51,7 @@ class SmartSleepTest extends \PHPUnit_Framework_TestCase
             ->with($this->time)
             ->will($this->returnValue(null));
 
-        $this->assertEquals(0, $this->smart_sleep->getSleepSeconds($this->time));
+        $this->assertEquals(0, $this->smart_sleep->sleepForSeconds($this->time));
     }
 
     public function testGetSleepSecondsBadSeconds()
@@ -67,7 +67,7 @@ class SmartSleepTest extends \PHPUnit_Framework_TestCase
             ->method('getSeconds')
             ->will($this->returnValue(-1));
 
-        $this->assertEquals(0, $this->smart_sleep->getSleepSeconds($this->time));
+        $this->assertEquals(0, $this->smart_sleep->sleepForSeconds($this->time));
     }
 
     public function testGetSleepSeconds()
@@ -83,6 +83,6 @@ class SmartSleepTest extends \PHPUnit_Framework_TestCase
             ->method('getSeconds')
             ->will($this->returnValue(10));
 
-        $this->assertEquals(10, $this->smart_sleep->getSleepSeconds($this->time));
+        $this->assertEquals(10, $this->smart_sleep->sleepForSeconds($this->time));
     }
 }

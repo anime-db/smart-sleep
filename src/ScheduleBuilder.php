@@ -15,7 +15,7 @@ class ScheduleBuilder
     /**
      * @var RuleCollection
      */
-    protected $collection;
+    private $collection;
 
     /**
      * @param RuleCollection $collection

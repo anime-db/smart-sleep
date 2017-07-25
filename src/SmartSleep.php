@@ -15,7 +15,7 @@ class SmartSleep
     /**
      * @var Schedule
      */
-    protected $schedule = [];
+    private $schedule = [];
 
     /**
      * @param Schedule $schedule
@@ -30,7 +30,7 @@ class SmartSleep
      *
      * @return int
      */
-    public function getSleepSeconds(\DateTime $now)
+    public function sleepForSeconds(\DateTime $now)
     {
         $rule = $this->schedule->getMatchedRule($now);
         if ($rule instanceof Rule) {
