@@ -41,7 +41,7 @@ class EverydayRuleTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($start, $rule->start());
         $this->assertEquals($end, $rule->end());
-        $this->assertTrue($rule->seconds() <= $seconds);
+        $this->assertLessThanOrEqual($seconds, $rule->seconds());
 
         if ($match) {
             $this->assertTrue($rule->isMatched($time));
