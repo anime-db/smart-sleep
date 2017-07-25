@@ -49,6 +49,7 @@ class HolidayRuleTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($start, $rule->start());
         $this->assertEquals($end, $rule->end());
+        $this->assertGreaterThanOrEqual(0, $seconds);
         $this->assertLessThanOrEqual($seconds, $rule->seconds());
 
         if ($match) {

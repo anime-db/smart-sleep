@@ -29,8 +29,8 @@ class OnceWeekRuleTest extends \PHPUnit_Framework_TestCase
         $seconds = $this->rule->seconds();
 
         // -1 seconds because is long wait execute test
-        $this->assertTrue($seconds >= -1);
-        $this->assertTrue($seconds < $limit);
+        $this->assertGreaterThanOrEqual(-1, $seconds);
+        $this->assertLessThan($limit, $seconds);
     }
 
     public function testGetSecondsFromMatched()
@@ -42,7 +42,7 @@ class OnceWeekRuleTest extends \PHPUnit_Framework_TestCase
         $this->rule->isMatched($time);
 
         $seconds = $this->rule->seconds();
-        $this->assertTrue($seconds >= 0);
-        $this->assertTrue($seconds < $limit);
+        $this->assertGreaterThanOrEqual(0, $seconds);
+        $this->assertLessThan($limit, $seconds);
     }
 }
