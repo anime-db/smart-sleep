@@ -19,7 +19,36 @@ composer require anime-db/smart-sleep
 
 ## How-to
 
-See [functional tests](https://github.com/anime-db/smart-sleep/tree/master/tests/functional) for more details.
+First build schedule
+
+```php
+use AnimeDb\SmartSleep\Rule\EverydayRule;
+use AnimeDb\SmartSleep\Schedule;
+
+$schedule = new Schedule([
+    new EverydayRule(0, 3, 260), // [00:00, 03:00)
+    new EverydayRule(3, 9, 900), // [03:00, 09:00)
+    new EverydayRule(9, 19, 160), // [09:00, 19:00)
+    new EverydayRule(19, 23, 70), // [19:00, 23:00)
+    new EverydayRule(23, 24, 60), // [23:00, 24:00)
+]);
+```
+
+Configure SmartSleep
+
+```php
+use AnimeDb\SmartSleep\SmartSleep;
+
+$smart = new SmartSleep($schedule);
+```
+
+And now we can sleep
+
+```php
+$seconds = $smart->sleepForSeconds(new \DateTime());
+
+sleep($seconds);
+```
 
 ## License
 
