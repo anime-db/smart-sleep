@@ -30,13 +30,13 @@ class SmartSleepTest extends \PHPUnit_Framework_TestCase
     private $smart_sleep;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeImmutable
      */
     private $time;
 
     protected function setUp()
     {
-        $this->time = new \DateTime();
+        $this->time = new \DateTimeImmutable();
         $this->rule = $this->getMock(Rule::class);
         $this->schedule = $this->getMock(Schedule::class);
 

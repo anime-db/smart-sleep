@@ -24,7 +24,7 @@ class OnceMonthRuleTest extends \PHPUnit_Framework_TestCase
 
     public function testSecondsFromConstruct()
     {
-        $limit_time = new \DateTime('+2 month 00:00:00');
+        $limit_time = new \DateTimeImmutable('+2 month 00:00:00');
         $limit_time->modify('first day of this month');
         $limit = $limit_time->getTimestamp() - time();
 
@@ -37,8 +37,8 @@ class OnceMonthRuleTest extends \PHPUnit_Framework_TestCase
 
     public function testSecondsFromMatched()
     {
-        $time = new \DateTime('23-06-2016 13:42:15');
-        $limit_time = new \DateTime('01-08-2016 13:42:15');
+        $time = new \DateTimeImmutable('23-06-2016 13:42:15');
+        $limit_time = new \DateTimeImmutable('01-08-2016 13:42:15');
         $limit = $limit_time->getTimestamp() - $time->getTimestamp();
 
         $this->rule->isMatched($time);
@@ -50,8 +50,8 @@ class OnceMonthRuleTest extends \PHPUnit_Framework_TestCase
 
     public function testSecondsFromMatchedForFebruary()
     {
-        $time = new \DateTime('31-01-2016 13:42:15');
-        $limit_time = new \DateTime('01-03-2016 13:42:15');
+        $time = new \DateTimeImmutable('31-01-2016 13:42:15');
+        $limit_time = new \DateTimeImmutable('01-03-2016 13:42:15');
         $limit = $limit_time->getTimestamp() - $time->getTimestamp();
 
         $this->rule->isMatched($time);

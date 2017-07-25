@@ -89,7 +89,7 @@ class ScheduleTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetMatchedRule($count_rules, $match_rule_number)
     {
-        $time = new \DateTime();
+        $time = new \DateTimeImmutable();
         $match_rule = null;
 
         for ($i = 1; $i <= $count_rules; ++$i) {

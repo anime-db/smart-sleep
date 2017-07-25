@@ -26,11 +26,11 @@ class WeekdayRule implements HourIntervalRule
     }
 
     /**
-     * @param \DateTime $time
+     * @param \DateTimeImmutable $time
      *
      * @return bool
      */
-    public function isMatched(\DateTime $time)
+    public function isMatched(\DateTimeImmutable $time)
     {
         return
             $time->format('N') <= 5 &&

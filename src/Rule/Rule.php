@@ -16,9 +16,9 @@ interface Rule
     public function seconds();
 
     /**
-     * @param \DateTime $time
+     * @param \DateTimeImmutable $time
      *
      * @return bool
      */
-    public function isMatched(\DateTime $time);
+    public function isMatched(\DateTimeImmutable $time);
 }

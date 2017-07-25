@@ -21,6 +21,6 @@ $smart = new SmartSleep(new Schedule([
     new EverydayRule(23, 24, 60), // [23:00, 24:00)
 ]));
 
-$seconds = $smart->sleepForSeconds(new \DateTime());
+$seconds = $smart->sleepForSeconds(new \DateTimeImmutable());
 
 echo sprintf('Sleep %s s.'.PHP_EOL, $seconds);

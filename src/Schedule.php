@@ -68,11 +68,11 @@ class Schedule implements \IteratorAggregate, \Countable
     }
 
     /**
-     * @param \DateTime $time
+     * @param \DateTimeImmutable $time
      *
      * @return Rule|null
      */
-    public function matchedRule(\DateTime $time)
+    public function matchedRule(\DateTimeImmutable $time)
     {
         foreach ($this->rules as $rule) {
             if ($rule->isMatched($time)) {

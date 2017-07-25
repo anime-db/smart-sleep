@@ -26,11 +26,11 @@ class EverydayRule implements HourIntervalRule
     }
 
     /**
-     * @param \DateTime $time
+     * @param \DateTimeImmutable $time
      *
      * @return bool
      */
-    public function isMatched(\DateTime $time)
+    public function isMatched(\DateTimeImmutable $time)
     {
         return $this->start() <= $time->format('G') && $this->end() > $time->format('G');
     }

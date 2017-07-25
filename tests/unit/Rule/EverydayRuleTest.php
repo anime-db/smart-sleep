@@ -18,24 +18,24 @@ class EverydayRuleTest extends \PHPUnit_Framework_TestCase
     public function getMatches()
     {
         return [
-            [new \DateTime('2:59'), 3, 5, 10, false],
-            [new \DateTime('3:00'), 3, 5, 50, true],
-            [new \DateTime('4:00'), 3, 5, 100, true],
-            [new \DateTime('4:59'), 3, 5, 200, true],
-            [new \DateTime('5:00'), 3, 5, 550, false],
+            [new \DateTimeImmutable('2:59'), 3, 5, 10, false],
+            [new \DateTimeImmutable('3:00'), 3, 5, 50, true],
+            [new \DateTimeImmutable('4:00'), 3, 5, 100, true],
+            [new \DateTimeImmutable('4:59'), 3, 5, 200, true],
+            [new \DateTimeImmutable('5:00'), 3, 5, 550, false],
         ];
     }
 
     /**
      * @dataProvider getMatches
      *
-     * @param \DateTime $time
+     * @param \DateTimeImmutable $time
      * @param int $start
      * @param int $end
      * @param int $seconds
      * @param bool $match
      */
-    public function testIsMatched(\DateTime $time, $start, $end, $seconds, $match)
+    public function testIsMatched(\DateTimeImmutable $time, $start, $end, $seconds, $match)
     {
         $rule = new EverydayRule($start, $end, $seconds);
 

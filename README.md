@@ -48,7 +48,7 @@ $smart = new SmartSleep($schedule);
 And now we can sleep
 
 ```php
-$seconds = $smart->sleepForSeconds(new \DateTime());
+$seconds = $smart->sleepForSeconds(new \DateTimeImmutable());
 
 sleep($seconds);
 ```
@@ -62,7 +62,7 @@ The rule corresponds to specific day in the specified time interval.
 Can be used for public holidays.
 
 ```php
-$rule = new SpecificDayRule(new \DateTime('2017-01-01'), $start_hour, $end_hour, $max_sleep_seconds)
+$rule = new SpecificDayRule(new \DateTimeImmutable('2017-01-01'), $start_hour, $end_hour, $max_sleep_seconds)
 ```
 
 ### EverydayRule

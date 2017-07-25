@@ -26,11 +26,11 @@ class SmartSleep
     }
 
     /**
-     * @param \DateTime $now
+     * @param \DateTimeImmutable $now
      *
      * @return int
      */
-    public function sleepForSeconds(\DateTime $now)
+    public function sleepForSeconds(\DateTimeImmutable $now)
     {
         $rule = $this->schedule->matchedRule($now);
         if ($rule instanceof Rule) {

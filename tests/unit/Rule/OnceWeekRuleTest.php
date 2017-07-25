@@ -35,8 +35,8 @@ class OnceWeekRuleTest extends \PHPUnit_Framework_TestCase
 
     public function testSecondsFromMatched()
     {
-        $time = new \DateTime('23-06-2016 13:42:15');
-        $limit_time = new \DateTime('07-07-2016 00:00:00');
+        $time = new \DateTimeImmutable('23-06-2016 13:42:15');
+        $limit_time = new \DateTimeImmutable('07-07-2016 00:00:00');
         $limit = $limit_time->getTimestamp() - $time->getTimestamp();
 
         $this->rule->isMatched($time);

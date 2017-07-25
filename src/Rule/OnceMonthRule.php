@@ -17,17 +17,17 @@ class OnceMonthRule implements Rule
 
     public function __construct()
     {
-        $this->time = new \DateTime(); // default time
+        $this->time = new \DateTimeImmutable(); // default time
     }
 
     /**
-     * @param \DateTime $time
+     * @param \DateTimeImmutable $time
      *
      * @return bool
      */
-    public function isMatched(\DateTime $time)
+    public function isMatched(\DateTimeImmutable $time)
     {
-        $this->time = clone $time; // save current time
+        $this->time = $time; // save current time
 
         return true;
     }
@@ -38,11 +38,9 @@ class OnceMonthRule implements Rule
     public function seconds()
     {
         // interval duration [next month, next month +1)
-        $offset_time = clone $this->time;
-        $offset_time->modify('first day of this month')->modify('+1 month')->setTime(0, 0, 0);
+        $offset_time = $this->time->modify('first day of this month')->modify('+1 month')->setTime(0, 0, 0);
 
-        $limit_time = clone $offset_time;
-        $limit_time->modify('+1 month');
+        $limit_time = $offset_time->modify('+1 month');
         $limit = $limit_time->getTimestamp() - $offset_time->getTimestamp();
 
         // offset to next month

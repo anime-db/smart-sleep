@@ -14,30 +14,30 @@ class SpecificDayRule implements HourIntervalRule
     use RandSecondsRuleTrait;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeImmutable
      */
     private $day;
 
     /**
-     * @param \DateTime $day
+     * @param \DateTimeImmutable $day
      * @param int $start
      * @param int $end
      * @param int $seconds
      */
-    public function __construct(\DateTime $day, $start, $end, $seconds)
+    public function __construct(\DateTimeImmutable $day, $start, $end, $seconds)
     {
-        $this->day = clone $day;
+        $this->day = $day;
         $this->setStart($start);
         $this->setEnd($end);
         $this->setSeconds($seconds);
     }
 
     /**
-     * @param \DateTime $time
+     * @param \DateTimeImmutable $time
      *
      * @return bool
      */
-    public function isMatched(\DateTime $time)
+    public function isMatched(\DateTimeImmutable $time)
     {
         return
             $this->day->format('Ymd') == $time->format('Ymd') &&
