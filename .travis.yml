@@ -10,6 +10,14 @@ php:
 notifications:
     email: dev@anime-db.org
 
+matrix:
+    fast_finish: true
+    include:
+        - php: hhvm
+          sudo: required
+          dist: trusty
+          group: edge
+
 before_install:
     - if [[ -n "$GH_TOKEN" ]]; then composer config github-oauth.github.com ${GH_TOKEN}; fi;
 
