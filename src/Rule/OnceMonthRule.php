@@ -39,7 +39,7 @@ class OnceMonthRule implements Rule
     {
         // interval duration [next month, next month +1)
         $offset_time = clone $this->time;
-        $offset_time->modify('+1 month 00:00:00')->modify('first day of this month');
+        $offset_time->modify('first day of this month')->modify('+1 month')->setTime(0, 0, 0);
 
         $limit_time = clone $offset_time;
         $limit_time->modify('+1 month');
