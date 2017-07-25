@@ -8,7 +8,7 @@
 
 namespace AnimeDb\SmartSleep\Rule;
 
-interface RuleInterface
+interface Rule
 {
     /**
      * @return int
@@ -18,7 +18,7 @@ interface RuleInterface
     /**
      * @param int $start
      *
-     * @return RuleInterface
+     * @return Rule
      */
     public function setStart($start);
 
@@ -30,7 +30,7 @@ interface RuleInterface
     /**
      * @param int $end
      *
-     * @return RuleInterface
+     * @return Rule
      */
     public function setEnd($end);
 
@@ -42,7 +42,7 @@ interface RuleInterface
     /**
      * @param int $seconds
      *
-     * @return RuleInterface
+     * @return Rule
      */
     public function setSeconds($seconds);
 

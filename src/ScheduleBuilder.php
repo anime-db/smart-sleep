@@ -8,7 +8,7 @@
 
 namespace AnimeDb\SmartSleep;
 
-use AnimeDb\SmartSleep\Rule\RuleInterface;
+use AnimeDb\SmartSleep\Rule\Rule;
 
 class ScheduleBuilder
 {
@@ -31,7 +31,7 @@ class ScheduleBuilder
      * @param int $end
      * @param int $seconds
      *
-     * @return RuleInterface|null
+     * @return Rule|null
      */
     public function buildRule($name, $start, $end, $seconds)
     {
@@ -67,7 +67,7 @@ class ScheduleBuilder
         foreach ($schedule as $options) {
             $rule = $this->buildRule($options['rule'], $options['start'], $options['end'], $options['seconds']);
 
-            if ($rule instanceof RuleInterface) {
+            if ($rule instanceof Rule) {
                 $result->add($rule);
             }
         }

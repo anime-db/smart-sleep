@@ -8,7 +8,7 @@
 
 namespace AnimeDb\SmartSleep;
 
-use AnimeDb\SmartSleep\Rule\RuleInterface;
+use AnimeDb\SmartSleep\Rule\Rule;
 
 class SmartSleep
 {
@@ -33,7 +33,7 @@ class SmartSleep
     public function getSleepSeconds(\DateTime $now)
     {
         $rule = $this->schedule->getMatchedRule($now);
-        if ($rule instanceof RuleInterface) {
+        if ($rule instanceof Rule) {
             $seconds = $rule->getSeconds();
 
             return $seconds > 0 ? $seconds : 0;

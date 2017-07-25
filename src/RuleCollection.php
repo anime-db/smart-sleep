@@ -8,22 +8,22 @@
 
 namespace AnimeDb\SmartSleep;
 
-use AnimeDb\SmartSleep\Rule\RuleInterface;
+use AnimeDb\SmartSleep\Rule\Rule;
 
 class RuleCollection
 {
     /**
-     * @var RuleInterface[]
+     * @var Rule[]
      */
     protected $rules = [];
 
     /**
      * @param string $name
-     * @param RuleInterface $rule
+     * @param Rule $rule
      *
      * @return RuleCollection
      */
-    public function set($name, RuleInterface $rule)
+    public function set($name, Rule $rule)
     {
         $this->rules[$name] = clone $rule;
 
@@ -33,7 +33,7 @@ class RuleCollection
     /**
      * @param string $name
      *
-     * @return RuleInterface|null
+     * @return Rule|null
      */
     public function get($name)
     {

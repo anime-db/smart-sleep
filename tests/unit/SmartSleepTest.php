@@ -10,7 +10,7 @@ namespace AnimeDb\SmartSleep\Tests\Unit;
 
 use AnimeDb\SmartSleep\Schedule;
 use AnimeDb\SmartSleep\SmartSleep;
-use AnimeDb\SmartSleep\Rule\RuleInterface;
+use AnimeDb\SmartSleep\Rule\Rule;
 
 class SmartSleepTest extends \PHPUnit_Framework_TestCase
 {
@@ -20,7 +20,7 @@ class SmartSleepTest extends \PHPUnit_Framework_TestCase
     protected $schedule;
 
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject|RuleInterface
+     * @var \PHPUnit_Framework_MockObject_MockObject|Rule
      */
     protected $rule;
 

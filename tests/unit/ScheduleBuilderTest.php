@@ -8,7 +8,7 @@
 
 namespace AnimeDb\SmartSleep\Tests\Unit;
 
-use AnimeDb\SmartSleep\Rule\RuleInterface;
+use AnimeDb\SmartSleep\Rule\Rule;
 use AnimeDb\SmartSleep\RuleCollection;
 use AnimeDb\SmartSleep\ScheduleBuilder;
 
@@ -50,7 +50,7 @@ class ScheduleBuilderTest extends \PHPUnit_Framework_TestCase
         $end = 2;
         $seconds = 10;
 
-        /* @var $rule \PHPUnit_Framework_MockObject_MockObject|RuleInterface */
+        /* @var $rule \PHPUnit_Framework_MockObject_MockObject|Rule */
         $rule = $this->getMock('AnimeDb\SmartSleep\Rule\RuleInterface');
         $this->buildRule($rule, $start, $end, $seconds);
 
@@ -81,7 +81,7 @@ class ScheduleBuilderTest extends \PHPUnit_Framework_TestCase
         $i = 0;
         foreach ($schedule as $key => $options) {
             if ($options['exists']) {
-                /* @var $rule \PHPUnit_Framework_MockObject_MockObject|RuleInterface */
+                /* @var $rule \PHPUnit_Framework_MockObject_MockObject|Rule */
                 $rule = $this->getMock('AnimeDb\SmartSleep\Rule\RuleInterface');
                 $this->buildRule($rule, $options['start'], $options['end'], $options['seconds']);
 

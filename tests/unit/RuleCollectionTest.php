@@ -8,7 +8,7 @@
 
 namespace AnimeDb\SmartSleep\Tests\Unit;
 
-use AnimeDb\SmartSleep\Rule\RuleInterface;
+use AnimeDb\SmartSleep\Rule\Rule;
 use AnimeDb\SmartSleep\RuleCollection;
 
 class RuleCollectionTest extends \PHPUnit_Framework_TestCase
@@ -28,7 +28,7 @@ class RuleCollectionTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->collection->has('foo'));
         $this->assertNull($this->collection->get('foo'));
 
-        /* @var $rule \PHPUnit_Framework_MockObject_MockObject|RuleInterface */
+        /* @var $rule \PHPUnit_Framework_MockObject_MockObject|Rule */
         $rule = $this->getMock('AnimeDb\SmartSleep\Rule\RuleInterface');
 
         $this->assertEquals($this->collection, $this->collection->set('foo', $rule));

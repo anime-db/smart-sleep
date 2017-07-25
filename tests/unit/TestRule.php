@@ -8,12 +8,12 @@
 
 namespace AnimeDb\SmartSleep\Tests\Unit;
 
-use AnimeDb\SmartSleep\Rule\RuleInterface;
+use AnimeDb\SmartSleep\Rule\Rule;
 
 /**
  * Rule only for tests.
  */
-class TestRule implements RuleInterface
+class TestRule implements Rule
 {
     /**
      * @var int

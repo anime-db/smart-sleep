@@ -8,7 +8,7 @@
 
 namespace AnimeDb\SmartSleep\Tests\Unit;
 
-use AnimeDb\SmartSleep\Rule\RuleInterface;
+use AnimeDb\SmartSleep\Rule\Rule;
 use AnimeDb\SmartSleep\Schedule;
 
 class ScheduleTest extends \PHPUnit_Framework_TestCase
@@ -31,7 +31,7 @@ class ScheduleTest extends \PHPUnit_Framework_TestCase
 
     public function testConstruct()
     {
-        /* @var $rules \PHPUnit_Framework_MockObject_MockObject[]|RuleInterface[] */
+        /* @var $rules \PHPUnit_Framework_MockObject_MockObject[]|Rule[] */
         $rules = [
             $this->getMock('AnimeDb\SmartSleep\Rule\RuleInterface'),
             $this->getMock('AnimeDb\SmartSleep\Rule\RuleInterface'),
@@ -52,7 +52,7 @@ class ScheduleTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(0, $this->schedule->count());
         $this->assertTrue($this->schedule->isEmpty());
 
-        /* @var $rule1 \PHPUnit_Framework_MockObject_MockObject|RuleInterface */
+        /* @var $rule1 \PHPUnit_Framework_MockObject_MockObject|Rule */
         $rule1 = $this->getMock('AnimeDb\SmartSleep\Rule\RuleInterface');
         $this->schedule->add($rule1);
 
@@ -60,7 +60,7 @@ class ScheduleTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(1, $this->schedule->count());
         $this->assertFalse($this->schedule->isEmpty());
 
-        /* @var $rule2 \PHPUnit_Framework_MockObject_MockObject|RuleInterface */
+        /* @var $rule2 \PHPUnit_Framework_MockObject_MockObject|Rule */
         $rule2 = $this->getMock('AnimeDb\SmartSleep\Rule\RuleInterface');
         $this->schedule->add($rule2);
 
@@ -93,7 +93,7 @@ class ScheduleTest extends \PHPUnit_Framework_TestCase
         $match_rule = null;
 
         for ($i = 1; $i <= $count_rules; ++$i) {
-            /* @var $rule \PHPUnit_Framework_MockObject_MockObject|RuleInterface */
+            /* @var $rule \PHPUnit_Framework_MockObject_MockObject|Rule */
             $rule = $this->getMock('AnimeDb\SmartSleep\Rule\RuleInterface');
             if ($match_rule_number && $i > $match_rule_number) {
                 $rule

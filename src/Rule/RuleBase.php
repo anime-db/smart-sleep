@@ -8,7 +8,7 @@
 
 namespace AnimeDb\SmartSleep\Rule;
 
-abstract class RuleBase implements RuleInterface
+abstract class RuleBase implements Rule
 {
     /**
      * @var int

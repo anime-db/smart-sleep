@@ -9,7 +9,7 @@
 namespace AnimeDb\SmartSleep\Tests\Unit\Rule;
 
 use AnimeDb\SmartSleep\Rule\RandMaxSecondsRuleBase;
-use AnimeDb\SmartSleep\Rule\RuleInterface;
+use AnimeDb\SmartSleep\Rule\Rule;
 
 abstract class RandMaxSecondsTestCase extends TestCase
 {
@@ -18,7 +18,7 @@ abstract class RandMaxSecondsTestCase extends TestCase
      *
      * @param int $min_sleep_seconds
      *
-     * @return RuleInterface
+     * @return Rule
      */
     abstract protected function getRuleForMinSleepSeconds($min_sleep_seconds);
 

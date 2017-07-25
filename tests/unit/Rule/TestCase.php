@@ -8,12 +8,12 @@
 
 namespace AnimeDb\SmartSleep\Tests\Unit\Rule;
 
-use AnimeDb\SmartSleep\Rule\RuleInterface;
+use AnimeDb\SmartSleep\Rule\Rule;
 
 abstract class TestCase extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @return RuleInterface
+     * @return Rule
      */
     abstract protected function getRule();
 
